@@ -10,9 +10,17 @@ import appointmentRoutes from './routes/appointments.js';
 dotenv.config();
 
 const app = express();
+// Configuration CORS
+const corsOptions = {
+    origin: ['https://decision-io.vercel.app', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    optionsSuccessStatus: 204
+};
 
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
